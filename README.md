@@ -1,8 +1,10 @@
 # 👋 Hi, I'm Raihan
 
-### 💻 Student • TJKT • Web Development
+### 💻 Student • TJKT • Web Developer
 
-I'm a student who enjoys learning programming, web development, and technology.
+I'm a student who enjoys learning programming, web development, networking, and technology.
+
+---
 
 ## 🚀 About Me
 
@@ -11,48 +13,65 @@ I'm a student who enjoys learning programming, web development, and technology.
 - 🐘 PHP & MySQL
 - ⚡ JavaScript
 - 🌐 Building web projects
-- 📱 Learning and coding with Termux
+- 📱 Coding with Termux
 
-## 🛠️ Technologies
+---
 
-### Frontend
-HTML • CSS • JavaScript • Bootstrap
+## 🛠️ Tech Stack
 
-### Backend
-PHP • MySQL
+<p align="left">
+  <img src="https://skillicons.dev/icons?i=html,css,js,php,mysql,bootstrap,git,github,vscode,linux" />
+</p>
 
-### Tools
-Git • GitHub • VS Code • Termux
+---
+
+## 📊 GitHub Stats
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=hanz712&show_icons=true&theme=tokyonight&hide_border=true" height="170"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=hanz712&layout=compact&theme=tokyonight&hide_border=true" height="170"/>
+</p>
+
+---
+
+## 🔥 GitHub Streak
+
+<p align="center">
+  <img src="https://streak-stats.demolab.com?user=hanz712&theme=tokyonight&hide_border=true" />
+</p>
+
+---
 
 ## 📌 Featured Projects
 
 ### 🏫 XI TJKT 2 — Portal Kelas
-Portal kelas untuk mengelola informasi siswa, jadwal, piket, tugas, galeri, dan sistem absensi QR.
+
+Portal kelas untuk informasi siswa, jadwal, piket, tugas, galeri, dan sistem absensi QR.
 
 ### 📈 Trading Learning Platform
+
 Platform pembelajaran trading dengan materi, jurnal, quiz, dan fitur backtesting.
 
 ### 🛠️ Termux Daily Utility
+
 Kumpulan utility sederhana untuk membantu berbagai kebutuhan sehari-hari melalui Termux.
 
 ### 🔐 Cyber Security Toolkit
-Toolkit pembelajaran dan utility keamanan siber yang dikembangkan untuk lingkungan Termux.
+
+Toolkit pembelajaran dan utility keamanan siber untuk lingkungan Termux.
+
+---
 
 ## 📚 Currently Learning
 
-- Web Development
-- PHP & MySQL
-- JavaScript
-- Git & GitHub
-- Cyber Security
-- Networking
+`PHP` `MySQL` `JavaScript` `Networking` `Cyber Security` `Git`
+
+---
 
 ## 🎯 Goals
-
-Keep learning, keep building, and improve every day.
 
 > Learn • Build • Improve
 
 ---
 
-⭐ Thanks for visiting my profile!!
+⭐ Thanks for visiting my profile!
