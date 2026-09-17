@@ -1,0 +1,85 @@
+name: Update GitHub Profile Metrics
+
+on:
+  schedule:
+    - cron: "0 17 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate profile metrics
+        uses: lowlighter/metrics@latest
+        with:
+          filename: assets/metrics.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          user: hanz712
+          base: header, activity, community, repositories, metadata
+          config_timezone: Asia/Jakarta
+          config_display: large
+          output_action: commit
+          committer_message: "chore: update GitHub metrics [Skip GitHub Action]"
+          plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
+          plugin_languages: yes
+          plugin_languages_limit: 6
+          plugin_languages_details: bytes-size, percentage
+          plugin_languages_sections: most-used, recently-used
+          plugin_habits: yes
+          plugin_habits_facts: yes
+          plugin_habits_charts: yes
+          plugin_habits_charts_type: graph
+          plugin_habits_days: 30
+
+      - name: Generate languages metrics
+        uses: lowlighter/metrics@latest
+        with:
+          filename: assets/languages.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          user: hanz712
+          base: ""
+          config_timezone: Asia/Jakarta
+          output_action: commit
+          committer_message: "chore: update language metrics [Skip GitHub Action]"
+          plugin_languages: yes
+          plugin_languages_limit: 8
+          plugin_languages_details: bytes-size, percentage
+          plugin_languages_sections: most-used, recently-used
+
+      - name: Generate activity metrics
+        uses: lowlighter/metrics@latest
+        with:
+          filename: assets/activity.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          user: hanz712
+          base: ""
+          config_timezone: Asia/Jakarta
+          output_action: commit
+          committer_message: "chore: update activity metrics [Skip GitHub Action]"
+          plugin_activity: yes
+          plugin_activity_limit: 8
+          plugin_activity_days: 30
+
+      - name: Generate coding habits
+        uses: lowlighter/metrics@latest
+        with:
+          filename: assets/habits.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          user: hanz712
+          base: ""
+          config_timezone: Asia/Jakarta
+          output_action: commit
+          committer_message: "chore: update coding habits [Skip GitHub Action]"
+          plugin_habits: yes
+          plugin_habits_facts: yes
+          plugin_habits_charts: yes
+          plugin_habits_charts_type: graph
+          plugin_habits_days: 30
