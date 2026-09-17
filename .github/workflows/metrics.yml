@@ -4,9 +4,6 @@ on:
   schedule:
     - cron: "0 17 * * *"
   workflow_dispatch:
-  push:
-    branches:
-      - main
 
 permissions:
   contents: write
@@ -16,70 +13,88 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Generate profile metrics
-        uses: lowlighter/metrics@latest
+      - name: Generate main metrics
+        uses: lowlighter/metrics@v3.34
         with:
-          filename: assets/metrics.svg
+          filename: metrics.svg
           token: ${{ secrets.GITHUB_TOKEN }}
           user: hanz712
+
           base: header, activity, community, repositories, metadata
+
           config_timezone: Asia/Jakarta
           config_display: large
-          output_action: commit
-          committer_message: "chore: update GitHub metrics [Skip GitHub Action]"
+          output_action: none
+
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
+
           plugin_languages: yes
           plugin_languages_limit: 6
           plugin_languages_details: bytes-size, percentage
-          plugin_languages_sections: most-used, recently-used
+          plugin_languages_sections: most-used
+
           plugin_habits: yes
           plugin_habits_facts: yes
           plugin_habits_charts: yes
           plugin_habits_charts_type: graph
           plugin_habits_days: 30
 
-      - name: Generate languages metrics
-        uses: lowlighter/metrics@latest
+      - name: Generate languages
+        uses: lowlighter/metrics@v3.34
         with:
-          filename: assets/languages.svg
+          filename: languages.svg
           token: ${{ secrets.GITHUB_TOKEN }}
           user: hanz712
+
           base: ""
+
           config_timezone: Asia/Jakarta
-          output_action: commit
-          committer_message: "chore: update language metrics [Skip GitHub Action]"
+          output_action: none
+
           plugin_languages: yes
           plugin_languages_limit: 8
           plugin_languages_details: bytes-size, percentage
-          plugin_languages_sections: most-used, recently-used
-
-      - name: Generate activity metrics
-        uses: lowlighter/metrics@latest
-        with:
-          filename: assets/activity.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-          user: hanz712
-          base: ""
-          config_timezone: Asia/Jakarta
-          output_action: commit
-          committer_message: "chore: update activity metrics [Skip GitHub Action]"
-          plugin_activity: yes
-          plugin_activity_limit: 8
-          plugin_activity_days: 30
+          plugin_languages_sections: most-used
 
       - name: Generate coding habits
-        uses: lowlighter/metrics@latest
+        uses: lowlighter/metrics@v3.34
         with:
-          filename: assets/habits.svg
+          filename: habits.svg
           token: ${{ secrets.GITHUB_TOKEN }}
           user: hanz712
+
           base: ""
+
           config_timezone: Asia/Jakarta
-          output_action: commit
-          committer_message: "chore: update coding habits [Skip GitHub Action]"
+          output_action: none
+
           plugin_habits: yes
           plugin_habits_facts: yes
           plugin_habits_charts: yes
           plugin_habits_charts_type: graph
           plugin_habits_days: 30
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Copy generated metrics
+        run: |
+          mkdir -p assets
+          cp /metrics_renders/metrics.svg assets/metrics.svg
+          cp /metrics_renders/languages.svg assets/languages.svg
+          cp /metrics_renders/habits.svg assets/habits.svg
+
+      - name: Commit generated metrics
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add assets/*.svg
+
+          if git diff --cached --quiet; then
+            echo "No metrics changes."
+          else
+            git commit -m "chore: update GitHub metrics [Skip GitHub Action]"
+            git push
+          fi
