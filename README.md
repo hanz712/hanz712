@@ -123,6 +123,11 @@ keamanan siber dan penggunaan tools secara aman.
 
 </div>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Last%20Updated-September-7c3aed?style=for-the-badge&logo=github&logoColor=white" />
+  <img src="https://img.shields.io/badge/Custom%20Badge-Invalid-555555?style=for-the-badge" />
+</p>
+
 ---
 
 <div align="center">
